@@ -7,13 +7,11 @@ import jakarta.persistence.*;
 public class MaritalStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
 
     @Column
     private String description;
 
-    @OneToOne(mappedBy = "client", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Client client;
+
 }

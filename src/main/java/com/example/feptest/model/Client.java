@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CLIENT")
+@Table(name = "client")
 public class Client {
 
     @Id
@@ -44,8 +44,7 @@ public class Client {
     private Integer sex;
 
     @OneToOne
-    @MapsId
-    @JoinColumn(name = "maritalStatus_id")
+    @JoinColumn(name = "marital_status_fk")
     private MaritalStatus maritalStatus;
 
     @Column(nullable = false)
