@@ -1,5 +1,6 @@
 package com.example.feptest.model;
 
+import com.example.feptest.dto.ClientRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
@@ -17,6 +18,19 @@ import java.time.LocalDate;
 @Table(name = "client")
 public class Client {
 
+    public Client(ClientRequest client) {
+        this.externCode = client.getExternCode();
+        this.name = client.getName();
+        this.email = client.getEmail();
+        this.cpf = client.getCpf();
+        this.indCpf = client.getIndCpf();
+        this.sex = client.getSex();
+        this.maritalStatus = client.getMaritalStatusId();
+        this.birthDate = client.getBirthDate();
+        this.cellphone = client.getCellphone();
+        this.identification = client.getIdentification();
+        this.signDigital = client.isSignDigital();
+    };
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,9 +57,8 @@ public class Client {
     @Column
     private Integer sex;
 
-    @OneToOne
-    @JoinColumn(name = "marital_status_fk")
-    private MaritalStatus maritalStatus;
+    @Column
+    private Integer maritalStatus;
 
     @Column(nullable = false)
     private LocalDate birthDate;
