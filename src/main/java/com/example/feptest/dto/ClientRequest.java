@@ -1,8 +1,7 @@
 package com.example.feptest.dto;
 
-import com.example.feptest.model.MaritalStatus;
-import jakarta.annotation.Nullable;
-import jakarta.persistence.*;
+import com.example.feptest.model.Client;
+import com.example.feptest.repository.ClientRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +23,6 @@ public class ClientRequest {
     private String cellphone;
     private String identification;
     private boolean signDigital;
+
+    //public Client update(Long id, ClientRepository clientRepository) {}
 }

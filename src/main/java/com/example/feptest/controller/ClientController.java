@@ -1,5 +1,6 @@
 package com.example.feptest.controller;
 
+import com.example.feptest.dto.ClientDeleteList;
 import com.example.feptest.dto.ClientList;
 import com.example.feptest.dto.ClientRequest;
 import com.example.feptest.model.Client;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/client")
 public class ClientController {
     @Autowired
@@ -18,12 +20,18 @@ public class ClientController {
 
     @GetMapping("/all")
     public List<ClientList> getAll() {
-        List<ClientList> teste = this.clientService.getAllClients();
-        return teste;
+        List<ClientList> clients = this.clientService.getAllClients();
+        return clients;
     }
 
     @PostMapping("/new")
     public ResponseEntity<?> newClient(@RequestBody ClientRequest newClient) {
         return this.clientService.createNewClient(newClient);
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteClient(@RequestBody List<ClientDeleteList> clientDeleteList) {
+        return this.clientService.deleteListClient(clientDeleteList);
+    };
+
 }
